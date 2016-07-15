@@ -31,7 +31,10 @@ var ingredients = {
 	salty: ['Olive on a Stick', 'Salt-Dusted Rim', 'Rasher of Bacon'],
 	sweet: ['Sugar Cube', 'Spoonful of Honey', 'Splash of Cola'],
 	fruity: ['Splash of Apple Juice', 'Strawberry Syrup', 'Raspberry Syrup'],
-	vegetable: ['Hint of Tomato','Celery Stick','Hint of Carrot Juice']
+	vegetable: ['Hint of Tomato','Celery Stick','Hint of Carrot Juice'],
+	drink: function(type) {
+		drink.push(ingredients[type][(Math.floor(Math.random() * ingredients[type].length))]);
+	}
 }
 
 // Names for the drinks
@@ -60,28 +63,29 @@ $(document).on('click', '.restart', function(){
 
 })
 
-// Outputs a random value from an array
-function randomDrink(type) {
-	drink.push(ingredients[type][(Math.floor(Math.random() * ingredients[type].length))]);
-};
-
 // Loops over the inputs and gets their values, and grabs a random ingredient based on their values
 function makeDrink() {
-	for (var i = 1; i < 5; i++) {
-		var radios = $('input[name="Q'+i+'"]:checked').val();
-		randomDrink(radios);
-	}
-
+	$('input[type="radio"]:checked').each(function(i,v){
+		ingredients.drink($(v).val());
+	});
 	// Each call fills the drinkName array with a random segment of a name.
 	names.full("first");
 	names.full("middle");
 	names.full("last");
 
+	var html = '<h1 class="drinkHead">';
+
+	for (var i = 0; i < drinkName.length; i++) {
+		html += drinkName[i] + " ";
+	}
+	html += '</h1><ul class="drinkUl">';
+	for (var i = 0; i < drink.length; i++) {
+		html += '<li class="drinkLi">'+ drink[i] + '</li>';
+	}
+	html += '</ul><button class="restart">Make Another?</button>';
 	// Appends the drinkName and drink arrays to an overlay
-	$('.drinkContainer').append('<h1 class="drinkHead">'+ drinkName[0] + " " + drinkName[1] + drinkName[2] +'</h1><ul class="drinkUl"><li class="drinkLi">'+ drink[0] +'</li><li class="drinkLi">'+ drink[1] +'</li><li class="drinkLi">'+ drink[2] +'</li><li class="drinkLi">'+ drink[3] +'</li></ul><button class="restart">Make Another?</button')
+	$('.drinkContainer').append(html);
 }
-
-
 
 });
 
