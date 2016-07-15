@@ -12,8 +12,7 @@ body {
 
 /*----- Overlay Styles -------*/
 
-#dim {
-	display: none;
+.dim {
 	z-index: 100;
 	height: 100%;
 	width: 75%;
@@ -24,12 +23,58 @@ body {
 	right: 0;
 }
 
+.drink {
+	display: none;
+	z-index: 100;
+	height: 100%;
+	width: 75%;
+	background-color: black;
+	opacity: 0.95;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.drinkHead {
+	text-align: center;
+	letter-spacing: 2px;
+	font-size: 4rem;
+}
+
+.drinkLi {
+	list-style: none;
+	font-size: 3rem;
+	letter-spacing: 2px;
+	margin: 10px 0;
+	text-align: center;
+}
+
+.drinkContainer {
+	width: 80%;
+	background-color: grey;
+	border: solid black 1px;
+	padding: 20px;
+	height: 500px;
+	margin: 0 auto;
+}
+
+.restart {
+	font-size: 2rem;
+	padding: 10px;
+	background-color: #F5C624;
+	border-radius: 10px;
+	margin: 20px auto;
+	display: block;
+	border: solid black 1px;
+}
+
 /*----- Sidebar Styles -------*/
 
 
 .sidebar {
 	border-right: solid black 1px;
-	height: 100%;
+	box-sizing: border-box;
+	min-height: 100%;
 	width: 25%;
 	float: left; 
 	background-color: white;
@@ -50,11 +95,17 @@ body {
 .introduction {
 	height: 200px;
 	width: 80%;
-	border: solid black 1px;
 	margin: 0 auto;
 }
 
-#startButton {
+.introText {
+	font-size: 35px;
+	text-align: center;
+	margin: 10px;
+	letter-spacing: 1px;
+}
+
+.nextButton, .startButton {
 	font-size: 2rem;
 	padding: 10px;
 	background-color: #F5C624;
@@ -68,7 +119,9 @@ body {
 
 .game {
 	z-index: 1;
-	height: 100%;
+	float: left;
+	width: 75%;
+	min-height: 100%;
 	background-image: url(../images/bar.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -76,17 +129,49 @@ body {
 
 .container {
 	width: 70%;
-	height: 70%;
-	margin: 30px;
-	border: solid red 1px;
+	margin: 50px 15% 30px;
+	padding: 10px 25px 25px;
+	border: solid black 1px;
 	border-radius: 10px;
 	float: right;
-	display: flex;
-	align-items: center;
 	background-color: grey;
-	opacity: 0.75;
+	opacity: 0.90;
 }
 
+.qTitle {
+	font-size: 30px;
+	letter-spacing: 2px;
+}
 
+.question {
+	width: 48%;
+	min-height: 146px;
+	position: relative;
+	float: left;
+	margin: 5px 0 0 5px;
+}
+
+.radio {
+	margin: 10px 0 0 50px;
+}
+
+label {
+	font-size: 20px;
+}
+
+#submit {
+	padding: 5px 25px;
+	background-color: #F5C624;
+	border: solid black 1px;
+	font-size: 25px;
+	border-radius: 10px;
+	margin: 0 auto;
+	display: block; 
+}
+
+.inputCont {
+	position: absolute;
+	bottom: 0;
+}
 
 

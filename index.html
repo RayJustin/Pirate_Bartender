@@ -8,34 +8,66 @@
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-	<div id="dim"></div>
 	<aside class="sidebar">
 		<div class="pirate">
 			<img class="pirateIcon" src="images/pirate_icon.jpg" alt="Pirate Icon">
 		</div>
 		<div class="introduction">
-			
+			<p class="introText">Welcome to the Pirate Saloon!</p>
 		</div>
-		<button id="startButton">Start!</button>
+		<input class="nextButton" name="start" value="Next" type="button">
 	</aside>
+	<div class="dim"></div>
 	<div class="game">
 		<div class="container">
-			<div class="question1">
-				
-			</div>
-			<div class="question2">
-				
-			</div>
-			<div class="question3">
-				
-			</div>
-			<div class="question4">
-				
-			</div>
+			<form>
+				<div class="question">
+					<h2 class="qTitle">Do ye like yer drinks strong?</h2>
+					<div class="inputCont">
+						<input id="Q1Yes" class="radio" name="Q1" value="strong" type="radio">
+						<label for="Q1Yes">YES</label>
+						<input id="Q1No" class="radio" name="Q1" value="weak" type="radio">
+						<label for="Q1No">NO</label>
+					</div>
+				</div>
+				<div class="question">
+					<h2 class="qTitle">Does ye hanker for a salty tang?</h2>
+					<div class="inputCont">
+						<input id="Q2Yes" class="radio" name="Q2" value="salty" type="radio">
+						<label for="Q2Yes">YES</label>
+						<input id="Q2No" class="radio" name="Q2" value="sweet" type="radio">
+						<label for="Q2No">NO</label>
+					</div>
+				</div>
+				<div class="question">
+					<h2 class="qTitle">Would ye like yer poison bitter?</h2>
+					<div class="inputCont">
+						<input id="Q3Yes" class="radio" name="Q3" value="bitter" type="radio">
+						<label for="Q3Yes">YES</label>
+						<input id="Q3No" class="radio" name="Q3" value="bland" type="radio">
+						<label for="Q3No">NO</label>
+					</div>
+				</div>
+				<div class="question">
+					<h2 class="qTitle">Are ye one for a fruity finish?</h2>
+					<div class="inputCont">
+						<input id="Q4Yes" class="radio" name="Q4" value="fruity" type="radio">
+						<label for="Q4Yes">YES</label>
+						<input id="Q4No" class="radio" name="Q4" value="vegetable" type="radio">
+						<label for="Q4No">NO</label>
+					</div>
+				</div>
+			</form>
 		</div>
-		
+			<input id="submit" type="submit" name="submit" value="Submit">
+	</div>
+	<div class="drink"> 
+		<div class="drinkContainer">
+			
+		</div>
 	</div>
 	
 </body>
+<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>  
 <script src="js/app.js"></script>
 </html>
