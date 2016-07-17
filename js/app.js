@@ -1,7 +1,39 @@
+	// Empty array to fill with drink ingredients
+	var drink = [];
 
+	// Empty array 
+	var drinkName = [];
+
+	// Ingredients for the drinks
+	var ingredients = {
+		strong: ['Glug of Rum', 'Slug of Whisky', 'Shot of Jager'],
+		weak: ['Splash of Rum','Ounce of Whisky','Shot of Gin'],
+		bitter: ['Shake of Bitters', 'Splash of Tonic', 'Twist of Lemon Peel'],
+		bland: ['Some Carbonated Soda','Tonic Water','Hint of RedBull'],
+		salty: ['Olive on a Stick', 'Salt-Dusted Rim', 'Rasher of Bacon'],
+		sweet: ['Sugar Cube', 'Spoonful of Honey', 'Splash of Cola'],
+		fruity: ['Splash of Apple Juice', 'Strawberry Syrup', 'Raspberry Syrup'],
+		vegetable: ['Hint of Tomato','Celery Stick','Hint of Carrot Juice'],
+		drink: function(type) {
+			drink.push(ingredients[type][(Math.floor(Math.random() * ingredients[type].length))]);
+		}
+	}
+
+	// Names for the drinks
+	var names = {
+		first:['Fluffy', 'Hardy', 'Sweet', 'Gnarly'],
+		middle: ['Puff-', 'Sea-', 'Scruff-', 'Pirate-'],
+		last: ['Dog','Badger','Horse','Fish'],
+		full: function() {
+			for (prop in names) {
+				if (prop !== "full"){
+					drinkName.push(names[prop][Math.floor(Math.random() * names[prop].length)]);
+				}
+			}	
+		}
+	}
 
 $(document).ready(function(){
-
 	// Changes Sidebar text and changes button to start button
 	$(document).on('click', '.nextButton', function(){
 		$(".introText").remove();
@@ -14,54 +46,22 @@ $(document).ready(function(){
 		$(".dim").removeClass("dim");
 	});
 
+	// Submits the form
+	$('form').on('submit', function(e){
+		e.preventDefault();
+		makeDrink();
+		$('.drink').fadeIn(1000);
+		drinkName = [];
+	});
 
-
-// Empty array to fill with drink ingredients
-var drink = [];
-
-// Empty array 
-var drinkName = [];
-
-// Ingredients for the drinks
-var ingredients = {
-	strong: ['Glug of Rum', 'Slug of Whisky', 'Shot of Jager'],
-	weak: ['Splash of Rum','Ounce of Whisky','Shot of Gin'],
-	bitter: ['Shake of Bitters', 'Splash of Tonic', 'Twist of Lemon Peel'],
-	bland: ['Some Carbonated Soda','Tonic Water','Hint of RedBull'],
-	salty: ['Olive on a Stick', 'Salt-Dusted Rim', 'Rasher of Bacon'],
-	sweet: ['Sugar Cube', 'Spoonful of Honey', 'Splash of Cola'],
-	fruity: ['Splash of Apple Juice', 'Strawberry Syrup', 'Raspberry Syrup'],
-	vegetable: ['Hint of Tomato','Celery Stick','Hint of Carrot Juice'],
-	drink: function(type) {
-		drink.push(ingredients[type][(Math.floor(Math.random() * ingredients[type].length))]);
-	}
-}
-
-// Names for the drinks
-var names = {
-	first:['Fluffy', 'Hardy', 'Sweet', 'Gnarly'],
-	middle: ['Puff-', 'Sea-', 'Scruff-', 'Pirate-'],
-	last: ['Dog','Badger','Horse','Fish'],
-	full: function(type) {
-		drinkName.push(names[type][(Math.floor(Math.random() * names[type].length))]);
-	}
-}
-
-// Submits the form
-$('#submit').on('click', function(){
-	makeDrink();
-	$('.drink').fadeIn(1000);
-	drinkName = [];
+	// Resets the game
+	$(document).on('click', '.restart', function(){
+		drink = [];
+		$('input:checked').prop('checked',false);
+		$('.drink').fadeOut(100);
+		$('.drinkContainer').html('');
+	})
 });
-
-// Resets the game
-$(document).on('click', '.restart', function(){
-	drink = [];
-	$('input:checked').prop('checked',false);
-	$('.drink').fadeOut(100);
-	$('.drinkContainer').html('');
-
-})
 
 // Loops over the inputs and gets their values, and grabs a random ingredient based on their values
 function makeDrink() {
@@ -69,9 +69,7 @@ function makeDrink() {
 		ingredients.drink($(v).val());
 	});
 	// Each call fills the drinkName array with a random segment of a name.
-	names.full("first");
-	names.full("middle");
-	names.full("last");
+	names.full();
 
 	var html = '<h1 class="drinkHead">';
 
@@ -86,11 +84,3 @@ function makeDrink() {
 	// Appends the drinkName and drink arrays to an overlay
 	$('.drinkContainer').append(html);
 }
-
-});
-
-
-
-
-
-
